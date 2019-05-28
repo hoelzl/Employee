@@ -5,7 +5,7 @@
 #include <fstream>
 #include <ctime>
 #include <iomanip>
-#include "employee.h"
+#include "Employee.h"
 
 Name::Name(int Id) : GivenName{"<no given name>"}, LastName{"<no last name>"} {
     std::ifstream Data{"employee-data.txt"};
