@@ -18,3 +18,14 @@ target_link_libraries(BadMain BadEmployee)
 add_executable(BadEmployeeTest Bad/EmployeeTest.cpp)
 target_link_libraries(BadEmployeeTest BadEmployee gtest gtest_main)
 add_test(BadEmployeeTest BadEmployeeTest)
+
+# The overkill part
+add_library(OverkillEmployee Overkill/DefaultPaymentCalculator.cpp Overkill/Employee.cpp Overkill/Name.cpp Overkill/Stream.cpp Overkill/DefaultDateGenerator.cpp)
+
+add_executable(OverkillMain Overkill/Main.cpp)
+target_link_libraries(OverkillMain OverkillEmployee)
+
+# Tests for the overkill part
+add_executable(OverkillEmployeeTest Overkill/EmployeeTest.cpp)
+target_link_libraries(OverkillEmployeeTest OverkillEmployee gtest gtest_main)
+add_test(OverkillEmployeeTest OverkillEmployeeTest)
