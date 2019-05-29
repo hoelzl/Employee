@@ -1,15 +1,17 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "cert-err58-cpp"
+//
 // Created by Matthias Hölzl on 2019-05-28.
 //
+#include <gmock/gmock.h>
 
-#include "Employee.h"
-#include "gmock/gmock.h"
-
-TEST(Employee, CreateEmployee)
+namespace
 {
-	Employee employee{1};
+
+TEST(Employee, AlwaysSucceed)
+{
 	ASSERT_TRUE(true);
 }
 
+} // namespace
 #pragma clang diagnostic pop
