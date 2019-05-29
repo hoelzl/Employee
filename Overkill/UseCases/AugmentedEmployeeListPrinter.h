@@ -14,21 +14,24 @@
 namespace ok::use_cases
 {
 
-class AugmentedEmployeeListPrinter : public ok::use_cases::EmployeeListPrinter
+using ok::entities::DateGenerator;
+using ok::entities::SalaryComputationStrategy;
+
+class AugmentedEmployeeListPrinter : public EmployeeListPrinter
 {
 public:
+	AugmentedEmployeeListPrinter(
+		std::ostream& Stream, std::shared_ptr<const DateGenerator> DateGenerator,
+		std::shared_ptr<const SalaryComputationStrategy> SalaryComputationStrategy);
+
 	~AugmentedEmployeeListPrinter() override;
 
-	AugmentedEmployeeListPrinter(
-		std::ostream& Stream, std::shared_ptr<const ok::entities::DateGenerator> DateGenerator,
-		std::shared_ptr<const ok::entities::SalaryComputationStrategy> SalaryComputationStrategy);
-
-	void PrintEmployeeList(const std::vector<ok::entities::Employee>& Employees) const override;
+	void PrintEmployee(const ok::entities::Employee& Employee) const override;
 
 private:
 	std::ostream* Stream{};
-	std::shared_ptr<const ok::entities::DateGenerator> DateGenerator{};
-	std::shared_ptr<const ok::entities::SalaryComputationStrategy> SalaryComputationStrategy{};
+	std::shared_ptr<const DateGenerator> DateGenerator{};
+	std::shared_ptr<const SalaryComputationStrategy> SalaryComputationStrategy{};
 };
 
 } // namespace ok::use_cases

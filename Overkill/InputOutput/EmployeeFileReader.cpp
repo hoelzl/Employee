@@ -20,16 +20,33 @@ std::vector<Employee> EmployeeFileReader::CreateEmployees() const
 {
 	std::ifstream Data{FileName};
 	std::vector<Employee> Result{};
+
+	if (Generator)
+	{
+		CreateAndAddEmployees(Data, Result);
+	}
+
+	return Result;
+}
+
+void EmployeeFileReader::CreateAndAddEmployees(std::ifstream& Data,
+											   std::vector<Employee>& Result) const
+{
 	while (Data)
 	{
 		std::string Line;
 		std::getline(Data, Line);
-		std::optional<Employee> Employee{Generator->CreateEmployee(Line)};
-		if (Employee.has_value())
-		{
-			Result.emplace_back(Employee.value());
-		}
+		CreateAndAddEmployee(Line, Result);
 	}
-	return Result;
 }
+void EmployeeFileReader::CreateAndAddEmployee(const std::string& Line,
+											  std::vector<Employee>& Result) const
+{
+	std::optional<Employee> Employee{Generator->CreateEmployee(Line)};
+	if (Employee.has_value())
+	{
+		Result.emplace_back(Employee.value());
+	}
+}
+
 } // namespace ok::input_output

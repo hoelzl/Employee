@@ -19,7 +19,7 @@ public:
 	explicit DefaultEmployeeListPrinter(std::ostream& OStream);
 	~DefaultEmployeeListPrinter() override;
 
-	void PrintEmployeeList(const std::vector<ok::entities::Employee>& Employees) const override;
+	void PrintEmployee(const ok::entities::Employee& Employee) const override;
 
 private:
 	::std::ostream* Stream;

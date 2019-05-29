@@ -13,18 +13,16 @@ DefaultEmployeeListPrinter::DefaultEmployeeListPrinter(std::ostream& OStream) : 
 {
 }
 
-void DefaultEmployeeListPrinter::PrintEmployeeList(
-	const std::vector<ok::entities::Employee>& Employees) const
-{
-	for (auto& Employee : Employees)
-	{
-		*Stream << Employee << std::endl;
-	}
-}
-
 DefaultEmployeeListPrinter::~DefaultEmployeeListPrinter()
 {
 	Stream = nullptr;
+}
+void DefaultEmployeeListPrinter::PrintEmployee(const ok::entities::Employee& Employee) const
+{
+	if (Stream)
+	{
+		*Stream << Employee << std::endl;
+	}
 }
 
 } // namespace ok::use_cases

@@ -1,17 +1,15 @@
-#include <utility>
-
 //
 // Created by tc on 2019-05-29.
 //
 
 #include "AugmentedEmployeeListPrinter.h"
+#include "../Core/Utilities.h"
+#include <utility>
 
-ok::use_cases::AugmentedEmployeeListPrinter::~AugmentedEmployeeListPrinter()
+namespace ok::use_cases
 {
-	Stream = nullptr;
-}
 
-ok::use_cases::AugmentedEmployeeListPrinter::AugmentedEmployeeListPrinter(
+AugmentedEmployeeListPrinter::AugmentedEmployeeListPrinter(
 	std::ostream& Stream, std::shared_ptr<const ok::entities::DateGenerator> DateGenerator,
 	std::shared_ptr<const ok::entities::SalaryComputationStrategy> SalaryComputationStrategy)
 	: Stream{&Stream}
@@ -20,13 +18,22 @@ ok::use_cases::AugmentedEmployeeListPrinter::AugmentedEmployeeListPrinter(
 {
 }
 
-void ok::use_cases::AugmentedEmployeeListPrinter::PrintEmployeeList(
-	const std::vector<ok::entities::Employee>& Employees) const
+AugmentedEmployeeListPrinter::~AugmentedEmployeeListPrinter()
 {
-	for (auto& Employee : Employees)
+	Stream = nullptr;
+}
+
+void AugmentedEmployeeListPrinter::PrintEmployee(const ok::entities::Employee& Employee) const
+{
+	if (Stream)
 	{
 		*Stream << "Employee{" << Employee.GetId() << ": " << Employee.GetName() << ", $"
 				<< SalaryComputationStrategy->ComputeSalary(Employee, *DateGenerator) << "}"
+				<< (core::IsTodayBirthday(DateGenerator->Today(), Employee.GetBirthday())
+						? " *** It's their birthday *** "
+						: "")
 				<< std::endl;
 	}
 }
+
+} // namespace ok::use_cases

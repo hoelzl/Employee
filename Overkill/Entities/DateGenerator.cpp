@@ -11,9 +11,16 @@ namespace ok::entities
 
 std::tm DateGenerator::ParseDate(const char* Date) const
 {
-	std::stringstream DateStream{Date};
-	std::tm Result{};
-	DateStream >> std::get_time(&Result, "%Y-%m-%d");
-	return Result;
+	if (Date)
+	{
+		std::stringstream DateStream{Date};
+		std::tm Result{};
+		DateStream >> std::get_time(&Result, "%Y-%m-%d");
+		return Result;
+	}
+	else
+	{
+		return std::tm{};
+	}
 }
 } // namespace ok::entities

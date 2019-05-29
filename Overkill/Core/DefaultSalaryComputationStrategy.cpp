@@ -3,14 +3,27 @@
 //
 
 #include "DefaultSalaryComputationStrategy.h"
+#include "Utilities.h"
 
-static bool IsTodayBirthday(const std::tm& Today, const std::tm& Birthday)
+namespace ok::core
 {
-	return Today.tm_mday == Birthday.tm_mday && Today.tm_mon == Birthday.tm_mon;
+
+using ok::entities::DateGenerator;
+using ok::entities::Employee;
+
+DefaultSalaryComputationStrategy::DefaultSalaryComputationStrategy(double BaseSalary,
+																   double BossPrime,
+																   double ShortNameScaleFactor,
+																   double BirthdayBonus)
+	: BaseSalary{BaseSalary}
+	, BossPrime{BossPrime}
+	, ShortNameScaleFactor{ShortNameScaleFactor}
+	, BirthdayBonus{BirthdayBonus}
+{
 }
 
-double ok::core::DefaultSalaryComputationStrategy::ComputeSalary(
-	const ok::entities::Employee& Employee, const ok::entities::DateGenerator& DateGenerator) const
+double DefaultSalaryComputationStrategy::ComputeSalary(const Employee& Employee,
+													   const DateGenerator& DateGenerator) const
 {
 	double Salary{BaseSalary};
 	if (Employee.GetName().GetLastName() == "Boss")
@@ -29,11 +42,5 @@ double ok::core::DefaultSalaryComputationStrategy::ComputeSalary(
 
 	return Salary;
 }
-ok::core::DefaultSalaryComputationStrategy::DefaultSalaryComputationStrategy(
-	double BaseSalary, double BossPrime, double ShortNameScaleFactor, double BirthdayBonus)
-	: BaseSalary{BaseSalary}
-	, BossPrime{BossPrime}
-	, ShortNameScaleFactor{ShortNameScaleFactor}
-	, BirthdayBonus{BirthdayBonus}
-{
-}
+
+} // namespace ok::core

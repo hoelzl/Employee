@@ -28,7 +28,7 @@ add_library(OverkillEmployee
         Overkill/UseCases/DefaultEmployeeListPrinter.cpp
         Overkill/UseCases/AugmentedEmployeeListPrinter.cpp
         Overkill/InputOutput/EmployeeFileReader.cpp
-        Overkill/Core/FixedDateGenerator.cpp Overkill/Core/FixedDateGenerator.h Overkill/Entities/DateGenerator.cpp Overkill/Entities/SalaryComputationStrategy.h Overkill/Core/DefaultSalaryComputationStrategy.cpp Overkill/Core/DefaultSalaryComputationStrategy.h)
+        Overkill/Core/FixedDateGenerator.cpp Overkill/Core/FixedDateGenerator.h Overkill/Entities/DateGenerator.cpp Overkill/Entities/SalaryComputationStrategy.h Overkill/Core/DefaultSalaryComputationStrategy.cpp Overkill/Core/DefaultSalaryComputationStrategy.h Overkill/Core/Utilities.cpp Overkill/UseCases/EmployeeListPrinter.cpp)
 
 add_executable(OverkillMain Overkill/Main.cpp)
 target_link_libraries(OverkillMain OverkillEmployee)

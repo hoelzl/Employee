@@ -25,6 +25,11 @@ public:
 
 	std::vector<ok::entities::Employee> CreateEmployees() const override;
 
+	void CreateAndAddEmployees(std::ifstream& Data, std::vector<entities::Employee>& Result) const;
+
+	void CreateAndAddEmployee(const std::string& Line,
+							  std::vector<entities::Employee>& Result) const;
+
 private:
 	std::string FileName;
 	std::shared_ptr<ok::use_cases::EmployeeFactory> Generator;

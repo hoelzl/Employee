@@ -1,16 +1,13 @@
-#include <utility>
-
-#include <utility>
-
 //
 // Created by Matthias Hölzl on 2019-05-28.
 //
 
-#include "DateGenerator.h"
 #include "Employee.h"
+#include "DateGenerator.h"
 #include "Name.h"
 #include "SalaryComputationStrategy.h"
 #include <iostream>
+#include <utility>
 
 namespace ok::entities
 {
