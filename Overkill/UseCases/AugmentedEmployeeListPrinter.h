@@ -19,14 +19,16 @@ class AugmentedEmployeeListPrinter : public ok::use_cases::EmployeeListPrinter
 public:
 	~AugmentedEmployeeListPrinter() override;
 
-	AugmentedEmployeeListPrinter(std::ostream& Stream,
-								 std::shared_ptr<const ok::entities::DateGenerator> DateGenerator);
+	AugmentedEmployeeListPrinter(
+		std::ostream& Stream, std::shared_ptr<const ok::entities::DateGenerator> DateGenerator,
+		std::shared_ptr<const ok::entities::SalaryComputationStrategy> SalaryComputationStrategy);
 
 	void PrintEmployeeList(const std::vector<ok::entities::Employee>& Employees) const override;
 
 private:
 	std::ostream* Stream{};
 	std::shared_ptr<const ok::entities::DateGenerator> DateGenerator{};
+	std::shared_ptr<const ok::entities::SalaryComputationStrategy> SalaryComputationStrategy{};
 };
 
 } // namespace ok::use_cases
