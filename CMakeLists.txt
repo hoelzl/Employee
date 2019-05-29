@@ -28,12 +28,28 @@ add_library(OverkillEmployee
         Overkill/UseCases/DefaultEmployeeListPrinter.cpp
         Overkill/UseCases/AugmentedEmployeeListPrinter.cpp
         Overkill/InputOutput/EmployeeFileReader.cpp
-        Overkill/Core/FixedDateGenerator.cpp Overkill/Core/FixedDateGenerator.h Overkill/Entities/DateGenerator.cpp Overkill/Entities/SalaryComputationStrategy.h Overkill/Core/DefaultSalaryComputationStrategy.cpp Overkill/Core/DefaultSalaryComputationStrategy.h Overkill/Core/Utilities.cpp Overkill/UseCases/EmployeeListPrinter.cpp)
+        Overkill/Core/FixedDateGenerator.cpp
+        Overkill/Entities/DateGenerator.cpp
+        Overkill/Core/DefaultSalaryComputationStrategy.cpp
+        Overkill/Core/Utilities.cpp
+        Overkill/UseCases/EmployeeListPrinter.cpp
+        )
 
 add_executable(OverkillMain Overkill/Main.cpp)
 target_link_libraries(OverkillMain OverkillEmployee)
 
 # Tests for the overkill part
-add_executable(OverkillEmployeeTest Overkill/Tests/Entities/EmployeeTest.cpp Overkill/Tests/Entities/NameTest.cpp Overkill/Tests/Entities/DateGeneratorTest.cpp Overkill/Tests/Core/DefaultPaymentCalculatorTest.cpp Overkill/Tests/Core/FixedDateGeneratorTest.cpp Overkill/Tests/UseCases/AugmentedEmployeeListPrinterTest.cpp Overkill/Tests/UseCases/DefaultEmployeeListPrinterTest.cpp Overkill/Tests/UseCases/EmployeeFactoryTest.cpp Overkill/Tests/UseCases/EmployeeListFactoryTest.cpp)
+add_executable(OverkillEmployeeTest
+        Overkill/Tests/Entities/EmployeeTest.cpp
+        Overkill/Tests/Entities/NameTest.cpp
+        Overkill/Tests/Entities/DateGeneratorTest.cpp
+        Overkill/Tests/Core/DefaultPaymentCalculatorTest.cpp
+        Overkill/Tests/Core/FixedDateGeneratorTest.cpp
+        Overkill/Tests/UseCases/AugmentedEmployeeListPrinterTest.cpp
+        Overkill/Tests/UseCases/DefaultEmployeeListPrinterTest.cpp
+        Overkill/Tests/UseCases/EmployeeFactoryTest.cpp
+        Overkill/Tests/UseCases/EmployeeListFactoryTest.cpp
+        )
+
 target_link_libraries(OverkillEmployeeTest OverkillEmployee gtest gtest_main)
 add_test(OverkillEmployeeTest OverkillEmployeeTest)
