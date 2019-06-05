@@ -4,20 +4,24 @@
 
 #include "Location.h"
 
-Location::Location(int building_number) : buildingNumber(building_number)
+Location::Location(int building_number) : building_number_(building_number)
+{
+}
+
+Location::Location() : building_number_{-1}
 {
 }
 
 bool operator==(Location lhs, Location rhs)
 {
-    if (lhs.buildingNumber < 0 || rhs.buildingNumber < 0)
+    if (lhs.building_number_ < 0 || rhs.building_number_ < 0)
     {
         return false;
     }
-    return lhs.buildingNumber == rhs.buildingNumber;
+    return lhs.building_number_ == rhs.building_number_;
 }
 std::ostream& operator<<(std::ostream& stream, const Location& location)
 {
-    stream << "{Location: building " << location.buildingNumber << "}";
+    stream << "{Location: building " << location.building_number_ << "}";
     return stream;
 }

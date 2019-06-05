@@ -6,6 +6,7 @@
 
 #include "Calendar.h"
 #include "Location.h"
+#include "../BadRefactored1/NameReader.h"
 #include <ctime>
 #include <memory>
 #include <ostream>
@@ -13,7 +14,7 @@
 class Name
 {
 public:
-    explicit Name(int id);
+    explicit Name(int id, const NameReader & name_reader);
 
 private:
     friend std::ostream& operator<<(std::ostream& Stream, const Name& Name);

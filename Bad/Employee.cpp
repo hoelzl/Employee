@@ -7,7 +7,8 @@
 #include <iomanip>
 #include <iostream>
 
-Name::Name(int id) : first_name_{"<no given name>"}, last_name_{"<no last name>"}
+Name::Name(int id, const NameReader& name_reader)
+    : first_name_{"<no given name>"}, last_name_{"<no last name>"}
 {
     std::ifstream data_{"employee-data.txt"};
     while (data_)

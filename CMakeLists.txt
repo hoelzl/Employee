@@ -20,7 +20,7 @@ target_link_libraries(BadEmployeeTest BadEmployee gtest gtest_main)
 add_test(BadEmployeeTest BadEmployeeTest)
 
 # The refactored bad part
-add_library(BadRef1 BadRefactored1/Employee.cpp BadRefactored1/Location.cpp BadRefactored1/Location.h BadRefactored1/Calendar.cpp BadRefactored1/Calendar.h BadRefactored1/CalendarReader.cpp BadRefactored1/CalendarReader.h BadRefactored1/Time.cpp BadRefactored1/Time.h BadRefactored1/CalendarFileReader.cpp BadRefactored1/CalendarFileReader.h)
+add_library(BadRef1 BadRefactored1/Employee.cpp BadRefactored1/Location.cpp BadRefactored1/Location.h BadRefactored1/Calendar.cpp BadRefactored1/Calendar.h BadRefactored1/CalendarReader.h BadRefactored1/Time.cpp BadRefactored1/Time.h BadRefactored1/CalendarFileReader.cpp BadRefactored1/CalendarFileReader.h BadRefactored1/EmployeeDataReader.h BadRefactored1/Name.cpp BadRefactored1/Name.h BadRefactored1/NameReader.h BadRefactored1/NameFileReader.cpp BadRefactored1/NameFileReader.h BadRefactored1/EmployeeDataFileReader.cpp BadRefactored1/EmployeeDataFileReader.h)
 
 add_executable(BadRef1Main BadRefactored1/Main.cpp)
 target_link_libraries(BadRef1Main BadRef1)

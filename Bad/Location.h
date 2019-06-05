@@ -15,7 +15,7 @@ public:
 private:
     friend bool operator==(Location lhs, Location rhs);
     friend std::ostream& operator<<(std::ostream& stream, const Location& location);
-    int buildingNumber{-1};
+    int building_number_{-1};
 };
 
 bool operator==(Location lhs, Location rhs);
