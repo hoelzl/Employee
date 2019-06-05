@@ -19,6 +19,17 @@ add_executable(BadEmployeeTest Bad/EmployeeTest.cpp)
 target_link_libraries(BadEmployeeTest BadEmployee gtest gtest_main)
 add_test(BadEmployeeTest BadEmployeeTest)
 
+# The refactored bad part
+add_library(BadRef1 BadRefactored1/Employee.cpp BadRefactored1/Location.cpp BadRefactored1/Location.h BadRefactored1/Calendar.cpp BadRefactored1/Calendar.h)
+
+add_executable(BadRef1Main BadRefactored1/Main.cpp)
+target_link_libraries(BadRef1Main BadRef1)
+
+# Tests for the refactored bad part
+add_executable(BadRef1Test BadRefactored1/EmployeeTest.cpp)
+target_link_libraries(BadRef1Test BadRef1 gtest gtest_main)
+add_test(BadRef1Test BadRef1Test)
+
 # The overkill part
 add_library(OverkillEmployee
         Overkill/Entities/Employee.cpp
