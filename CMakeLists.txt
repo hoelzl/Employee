@@ -9,7 +9,7 @@ enable_testing()
 include_directories(googletest/googletest/include googletest/googlemock/include)
 
 # The bad part
-add_library(BadEmployee Bad/Employee.cpp)
+add_library(BadEmployee Bad/Employee.cpp Bad/Location.cpp Bad/Location.h Bad/Calendar.cpp Bad/Calendar.h)
 
 add_executable(BadMain Bad/Main.cpp)
 target_link_libraries(BadMain BadEmployee)

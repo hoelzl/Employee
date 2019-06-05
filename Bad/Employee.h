@@ -4,7 +4,10 @@
 #ifndef EMPLOYEE_EMPLOYEE_H
 #define EMPLOYEE_EMPLOYEE_H
 
+#include "Calendar.h"
+#include "Location.h"
 #include <ctime>
+#include <memory>
 #include <ostream>
 
 class Name
@@ -26,11 +29,18 @@ class Employee
 public:
     explicit Employee(int id);
 
+    // If `time` is right now, checks whether the employee is in location.
+    // Otherwise checks the Employee's calendar whether they already have a meeting.
+    bool IsAvailableForMeeting(const std::tm& time, const Location& location,
+                               bool blockIfAvailable);
+
 private:
     friend std::ostream& operator<<(std::ostream& stream, const Employee& employee);
     int id_;
     Name name_;
     std::tm birthday_;
+    Location current_location_;
+    std::unique_ptr<Calendar> calendar_;
     bool IsBirthday() const;
     double GetSalary() const;
 };
