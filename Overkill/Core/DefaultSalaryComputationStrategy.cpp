@@ -31,7 +31,7 @@ double DefaultSalaryComputationStrategy::ComputeSalary(const Employee& employee,
         Salary += 1000.0;
     }
     if (employee.GetName().GetFirstName().size() <= 3 ||
-        employee.GetName().GetLastName().size() <= 3)
+        employee.GetName().GetLastName().size() <= 3 || employee.GetName().GetFirstName() == "Bill")
     {
         Salary *= 1.1;
     }

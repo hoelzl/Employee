@@ -4,6 +4,7 @@
 
 #include "AugmentedEmployeeListPrinter.h"
 #include "../Core/Utilities.h"
+#include <iomanip>
 #include <utility>
 
 namespace ok::use_cases
@@ -27,9 +28,11 @@ void AugmentedEmployeeListPrinter::PrintEmployee(const ok::entities::Employee& e
 {
     if (stream_)
     {
+        tm birthday = employee.GetBirthday();
         *stream_ << "Employee{" << employee.GetId() << ": " << employee.GetName() << ", $"
-                 << salary_computation_strategy_->ComputeSalary(employee, *date_generator_) << "}"
-                 << (core::IsTodayBirthday(date_generator_->Today(), employee.GetBirthday())
+                 << salary_computation_strategy_->ComputeSalary(employee, *date_generator_) << ", "
+                 << std::put_time(&birthday, "%Y-%m-%d") << "}"
+                 << (core::IsTodayBirthday(date_generator_->Today(), birthday)
                          ? " *** It's their birthday *** "
                          : "")
                  << std::endl;
