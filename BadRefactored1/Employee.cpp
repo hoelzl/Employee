@@ -31,12 +31,12 @@ std::ostream& operator<<(std::ostream& stream, const Name& name)
     return stream;
 }
 
-Employee::Employee(int id)
+Employee::Employee(int id, const CalendarReader& calendar_reader)
     : id_{id}
     , name_{id}
     , birthday_{}
     , current_location_{-1}
-    , calendar_{std::make_unique<Calendar>(id)}
+    , calendar_{std::make_unique<Calendar>(id, calendar_reader)}
 {
     std::ifstream data{"employee-data.txt"};
     while (data)

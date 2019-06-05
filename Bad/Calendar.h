@@ -22,7 +22,7 @@ public:
         bool operator<(const Time& rhs) const;
 
     private:
-        std::tm time;
+        std::tm time_;
     };
 
     explicit Calendar(int employee_id);

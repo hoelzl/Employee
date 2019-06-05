@@ -10,7 +10,7 @@ class Location
 {
 private:
 public:
-    explicit Location(int building_number);
+    explicit Location(int building_number = -1);
 
 private:
     friend bool operator==(Location lhs, Location rhs);

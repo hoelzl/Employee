@@ -27,7 +27,7 @@ std::ostream& operator<<(std::ostream& stream, const Name& name);
 class Employee
 {
 public:
-    explicit Employee(int id);
+    explicit Employee(int id, const CalendarReader& calendar_reader);
 
     // If `time` is right now, checks whether the employee is in location.
     // Otherwise checks the Employee's calendar whether they already have a meeting.

@@ -31,57 +31,57 @@ bool Calendar::HasAppointmentAt(std::tm time, Location& location)
 
 void Calendar::AddAppointment(std::tm time, const Location& location)
 {
-    appointments_.emplace(std::make_pair(Time{time}, location));
+    appointments_[Time{time}] = location;
 }
 
-Calendar::Time::Time(const tm& time) : time(time)
+Calendar::Time::Time(const tm& time) : time_(time)
 {
 }
 
 bool Calendar::Time::operator==(const Calendar::Time& rhs) const
 {
-    return time.tm_year == rhs.time.tm_year && time.tm_mon == rhs.time.tm_mon &&
-           time.tm_mday == rhs.time.tm_mday && time.tm_hour == rhs.time.tm_hour;
+    return time_.tm_year == rhs.time_.tm_year && time_.tm_mon == rhs.time_.tm_mon &&
+           time_.tm_mday == rhs.time_.tm_mday && time_.tm_hour == rhs.time_.tm_hour;
 }
 
 std::tm Calendar::Time::GetTime() const
 {
-    return time;
+    return time_;
 }
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCSimplifyInspection"
 bool Calendar::Time::operator<(const Calendar::Time& rhs) const
 {
-    if (time.tm_year < rhs.time.tm_year)
+    if (time_.tm_year < rhs.time_.tm_year)
     {
         return true;
     }
-    if (time.tm_year > rhs.time.tm_year)
+    if (time_.tm_year > rhs.time_.tm_year)
     {
         return false;
     }
-    if (time.tm_mon < rhs.time.tm_mon)
+    if (time_.tm_mon < rhs.time_.tm_mon)
     {
         return true;
     }
-    if (time.tm_mon > rhs.time.tm_mon)
+    if (time_.tm_mon > rhs.time_.tm_mon)
     {
         return false;
     }
-    if (time.tm_mday < rhs.time.tm_mday)
+    if (time_.tm_mday < rhs.time_.tm_mday)
     {
         return true;
     }
-    if (time.tm_mday > rhs.time.tm_mday)
+    if (time_.tm_mday > rhs.time_.tm_mday)
     {
         return false;
     }
-    if (time.tm_hour < rhs.time.tm_hour)
+    if (time_.tm_hour < rhs.time_.tm_hour)
     {
         return true;
     }
-    if (time.tm_hour > rhs.time.tm_hour)
+    if (time_.tm_hour > rhs.time_.tm_hour)
     {
         return false;
     }
