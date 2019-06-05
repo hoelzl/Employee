@@ -13,10 +13,11 @@ namespace ok::use_cases
 class EmployeeListPrinter
 {
     using Employee = ok::entities::Employee;
+
 public:
-	virtual ~EmployeeListPrinter() = default;
-	virtual void PrintEmployeeList(const std::vector<Employee>& Employees) const;
-    virtual void PrintEmployee(const Employee& Employee) const = 0;
+    virtual ~EmployeeListPrinter() = default;
+    virtual void PrintEmployeeList(const std::vector<Employee>& employees) const;
+    virtual void PrintEmployee(const Employee& employee) const = 0;
 };
 
 } // namespace ok::use_cases

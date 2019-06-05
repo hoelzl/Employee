@@ -11,20 +11,20 @@ namespace ok::use_cases
 
 using ok::entities::Employee;
 
-std::optional<Employee> EmployeeFactory::CreateEmployee(const std::string& EmployeeData) const
+std::optional<Employee> EmployeeFactory::CreateEmployee(const std::string& employee_data) const
 {
-	int DataId{-1};
-	std::string DataFirstName, DataLastName;
-	std::tm DataDate{};
-	std::stringstream Data{EmployeeData};
-	Data >> DataId >> DataFirstName >> DataLastName >> std::get_time(&DataDate, "%Y-%m-%d");
-	if (DataId >= 0)
-	{
-		return Employee{DataId, ok::entities::Name{DataFirstName, DataLastName}, DataDate};
-	}
-	else
-	{
-		return std::nullopt;
-	}
+    int id{-1};
+    std::string first_name, last_name;
+    std::tm date{};
+    std::stringstream data{employee_data};
+    data >> id >> first_name >> last_name >> std::get_time(&date, "%Y-%m-%d");
+    if (id >= 0)
+    {
+        return Employee{id, ok::entities::Name{first_name, last_name}, date};
+    }
+    else
+    {
+        return std::nullopt;
+    }
 }
 } // namespace ok::use_cases

@@ -18,7 +18,7 @@ class EmployeeFactory : public std::enable_shared_from_this<EmployeeFactory>
 
 public:
 	virtual ~EmployeeFactory() = default;
-	virtual std::optional<Employee> CreateEmployee(const std::string& EmployeeData) const;
+    virtual std::optional<Employee> CreateEmployee(const std::string& employee_data) const;
 };
 
 } // namespace ok::use_cases

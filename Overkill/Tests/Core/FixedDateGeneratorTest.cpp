@@ -10,7 +10,7 @@ namespace
 
 TEST(FixedDateGenerator, AlwaysSucceed)
 {
-	ASSERT_TRUE(true);
+    ASSERT_TRUE(true);
 }
 
 } // namespace

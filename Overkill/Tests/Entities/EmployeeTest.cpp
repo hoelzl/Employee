@@ -10,7 +10,7 @@ namespace
 
 TEST(Employee, AlwaysSucceed)
 {
-	ASSERT_TRUE(true);
+    ASSERT_TRUE(true);
 }
 
 } // namespace

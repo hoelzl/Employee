@@ -14,7 +14,7 @@ namespace ok::core
 class DefaultDateGenerator : public ok::entities::DateGenerator
 {
 public:
-	std::tm Today() const override;
+    std::tm Today() const override;
 };
 
 } // namespace ok::core

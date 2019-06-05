@@ -9,11 +9,11 @@ namespace ok::core
 
 std::tm FixedDateGenerator::Today() const
 {
-	return StoredTodayValue;
+    return StoredTodayValue;
 }
 
-FixedDateGenerator::FixedDateGenerator(const char* DateString)
-	: StoredTodayValue{DateGenerator::ParseDate(DateString)}
+FixedDateGenerator::FixedDateGenerator(const char* date_string)
+    : StoredTodayValue{DateGenerator::ParseDate(date_string)}
 {
 }
 

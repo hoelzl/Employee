@@ -9,8 +9,8 @@ namespace ok::core
 
 std::tm DefaultDateGenerator::Today() const
 {
-	std::time_t CurrentTime{std::time(nullptr)};
-	return *localtime(&CurrentTime);
+    std::time_t current_time{std::time(nullptr)};
+    return *localtime(&current_time);
 }
 
-} // namespace ok::entities
+} // namespace ok::core

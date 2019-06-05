@@ -20,19 +20,19 @@ using ok::use_cases::EmployeeListFactory;
 class EmployeeFileReader : public EmployeeListFactory
 {
 public:
-	EmployeeFileReader(std::string FileName,
-					   std::shared_ptr<ok::use_cases::EmployeeFactory> Generator);
+	EmployeeFileReader(std::string file_name,
+					   std::shared_ptr<ok::use_cases::EmployeeFactory> generator);
 
 	std::vector<ok::entities::Employee> CreateEmployees() const override;
 
-	void CreateAndAddEmployees(std::ifstream& Data, std::vector<entities::Employee>& Result) const;
+	void CreateAndAddEmployees(std::ifstream& data, std::vector<entities::Employee>& result) const;
 
-	void CreateAndAddEmployee(const std::string& Line,
-							  std::vector<entities::Employee>& Result) const;
+	void CreateAndAddEmployee(const std::string& line,
+							  std::vector<entities::Employee>& result) const;
 
 private:
-	std::string FileName;
-	std::shared_ptr<ok::use_cases::EmployeeFactory> Generator;
+	std::string file_name_;
+	std::shared_ptr<ok::use_cases::EmployeeFactory> generator_;
 };
 
 } // namespace ok::input_output

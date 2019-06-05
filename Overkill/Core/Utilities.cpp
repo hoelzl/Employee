@@ -7,9 +7,9 @@
 namespace ok::core
 {
 
-bool IsTodayBirthday(const std::tm& Today, const std::tm& Birthday)
+bool IsTodayBirthday(const std::tm& today, const std::tm& birthday)
 {
-	return Today.tm_mday == Birthday.tm_mday && Today.tm_mon == Birthday.tm_mon;
+    return today.tm_mday == birthday.tm_mday && today.tm_mon == birthday.tm_mon;
 }
 
-}
+} // namespace ok::core

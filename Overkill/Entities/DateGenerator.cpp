@@ -9,18 +9,18 @@
 namespace ok::entities
 {
 
-std::tm DateGenerator::ParseDate(const char* Date) const
+std::tm DateGenerator::ParseDate(const char* date) const
 {
-	if (Date)
-	{
-		std::stringstream DateStream{Date};
-		std::tm Result{};
-		DateStream >> std::get_time(&Result, "%Y-%m-%d");
-		return Result;
-	}
-	else
-	{
-		return std::tm{};
-	}
+    if (date)
+    {
+        std::stringstream date_stream{date};
+        std::tm result{};
+        date_stream >> std::get_time(&result, "%Y-%m-%d");
+        return result;
+    }
+    else
+    {
+        return std::tm{};
+    }
 }
 } // namespace ok::entities

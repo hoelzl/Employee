@@ -10,31 +10,31 @@
 class Name
 {
 public:
-	explicit Name(int Id);
+    explicit Name(int id);
 
 private:
-	friend std::ostream& operator<<(std::ostream& Stream, const Name& Name);
-	friend class Employee;
-	std::string GivenName;
-	std::string LastName;
+    friend std::ostream& operator<<(std::ostream& Stream, const Name& Name);
+    friend class Employee;
+    std::string first_name_;
+    std::string last_name_;
 };
 
-std::ostream& operator<<(std::ostream& Stream, const Name& Name);
+std::ostream& operator<<(std::ostream& stream, const Name& name);
 
 class Employee
 {
 public:
-	explicit Employee(int InId);
+    explicit Employee(int id);
 
 private:
-	friend std::ostream& operator<<(std::ostream& Stream, const Employee& Employee);
-	int MyId;
-	Name MyName;
-	std::tm Birthday;
-	bool IsBirthday() const;
-	double GetSalary() const;
+    friend std::ostream& operator<<(std::ostream& stream, const Employee& employee);
+    int id_;
+    Name name_;
+    std::tm birthday_;
+    bool IsBirthday() const;
+    double GetSalary() const;
 };
 
-std::ostream& operator<<(std::ostream& Stream, const Employee& Employee);
+std::ostream& operator<<(std::ostream& stream, const Employee& employee);
 
 #endif // EMPLOYEE_EMPLOYEE_H

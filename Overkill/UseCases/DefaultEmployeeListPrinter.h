@@ -16,13 +16,13 @@ namespace ok::use_cases
 class DefaultEmployeeListPrinter : public EmployeeListPrinter
 {
 public:
-	explicit DefaultEmployeeListPrinter(std::ostream& OStream);
-	~DefaultEmployeeListPrinter() override;
+    explicit DefaultEmployeeListPrinter(std::ostream& ostream);
+    ~DefaultEmployeeListPrinter() override;
 
-	void PrintEmployee(const ok::entities::Employee& Employee) const override;
+    void PrintEmployee(const ok::entities::Employee& employee) const override;
 
 private:
-	::std::ostream* Stream;
+    ::std::ostream* Stream;
 };
 
 } // namespace ok::use_cases

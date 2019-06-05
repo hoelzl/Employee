@@ -8,8 +8,8 @@
 
 TEST(Employee, CreateEmployee)
 {
-	Employee employee{1};
-	ASSERT_TRUE(true);
+    Employee employee{1};
+    ASSERT_TRUE(true);
 }
 
 #pragma clang diagnostic pop

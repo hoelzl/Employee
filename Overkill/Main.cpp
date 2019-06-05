@@ -22,12 +22,12 @@ using ok::use_cases::EmployeeListPrinter;
 
 int main()
 {
-	std::unique_ptr<EmployeeListFactory> EmployeeListFactory{std::make_unique<EmployeeFileReader>(
-		"employee-data.txt", std::make_shared<EmployeeFactory>())};
-	std::unique_ptr<EmployeeListPrinter> ListPrinter{std::make_unique<AugmentedEmployeeListPrinter>(
-		std::cout, std::make_shared<FixedDateGenerator>("2019-05-28"),
-		std::make_shared<DefaultSalaryComputationStrategy>())};
+    std::unique_ptr<EmployeeListFactory> EmployeeListFactory{std::make_unique<EmployeeFileReader>(
+        "employee-data.txt", std::make_shared<EmployeeFactory>())};
+    std::unique_ptr<EmployeeListPrinter> ListPrinter{std::make_unique<AugmentedEmployeeListPrinter>(
+        std::cout, std::make_shared<FixedDateGenerator>("2019-05-28"),
+        std::make_shared<DefaultSalaryComputationStrategy>())};
 
-	ListPrinter->PrintEmployeeList(EmployeeListFactory->CreateEmployees());
-	return 0;
+    ListPrinter->PrintEmployeeList(EmployeeListFactory->CreateEmployees());
+    return 0;
 }

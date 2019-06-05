@@ -9,20 +9,20 @@
 namespace ok::use_cases
 {
 
-DefaultEmployeeListPrinter::DefaultEmployeeListPrinter(std::ostream& OStream) : Stream{&OStream}
+DefaultEmployeeListPrinter::DefaultEmployeeListPrinter(std::ostream& ostream) : Stream{&ostream}
 {
 }
 
 DefaultEmployeeListPrinter::~DefaultEmployeeListPrinter()
 {
-	Stream = nullptr;
+    Stream = nullptr;
 }
-void DefaultEmployeeListPrinter::PrintEmployee(const ok::entities::Employee& Employee) const
+void DefaultEmployeeListPrinter::PrintEmployee(const ok::entities::Employee& employee) const
 {
-	if (Stream)
-	{
-		*Stream << Employee << std::endl;
-	}
+    if (Stream)
+    {
+        *Stream << employee << std::endl;
+    }
 }
 
 } // namespace ok::use_cases

@@ -16,7 +16,7 @@ public:
 	virtual ~DateGenerator() = default;
 	virtual std::tm Today() const = 0;
 
-	virtual std::tm ParseDate(const char* Date) const;
+	virtual std::tm ParseDate(const char* date) const;
 };
 
 } // namespace ok::entities

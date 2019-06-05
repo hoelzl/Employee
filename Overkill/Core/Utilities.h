@@ -9,7 +9,7 @@
 
 namespace ok::core
 {
-bool IsTodayBirthday(const std::tm& Today, const std::tm& Birthday);
+bool IsTodayBirthday(const std::tm& today, const std::tm& birthday);
 }
 
 #endif // EMPLOYEE_UTILITIES_H

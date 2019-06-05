@@ -14,12 +14,12 @@ namespace ok::core
 class FixedDateGenerator : public ok::entities::DateGenerator
 {
 public:
-	explicit FixedDateGenerator(const char* DateString);
+    explicit FixedDateGenerator(const char* date_string);
 
-	std::tm Today() const override;
+    std::tm Today() const override;
 
 private:
-	std::tm StoredTodayValue{};
+    std::tm StoredTodayValue{};
 };
 
 } // namespace ok::core

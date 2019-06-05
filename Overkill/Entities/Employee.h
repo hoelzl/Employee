@@ -16,21 +16,21 @@ namespace ok::entities
 class Employee
 {
 public:
-	Employee(int Id, Name Name, const std::tm& Birthday);
+    Employee(int id, Name name, const std::tm& birthday);
 
-	int GetId() const;
+    int GetId() const;
 
-	Name GetName() const;
+    Name GetName() const;
 
-	std::tm GetBirthday() const;
+    std::tm GetBirthday() const;
 
 private:
-	int MyId{};
-	Name MyName{"<no given name>", "<no last name>"};
-	std::tm MyBirthday{};
+    int id_{};
+    Name name_{"<no given name>", "<no last name>"};
+    std::tm birthday_{};
 };
 
-std::ostream& operator<<(std::ostream& Stream, const Employee& Employee);
+std::ostream& operator<<(std::ostream& stream, const Employee& employee);
 
 } // namespace ok::entities
 

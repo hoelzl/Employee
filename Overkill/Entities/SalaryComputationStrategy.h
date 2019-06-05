@@ -16,9 +16,10 @@ class Employee;
 class SalaryComputationStrategy
 {
 public:
-	virtual ~SalaryComputationStrategy() = default;
-	virtual double ComputeSalary(const Employee& Employee,
-								 const DateGenerator& DateGenerator) const = 0;
+    virtual ~SalaryComputationStrategy() = default;
+
+    virtual double ComputeSalary(const Employee& employee,
+                                 const DateGenerator& date_generator) const = 0;
 };
 
 } // namespace ok::entities

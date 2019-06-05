@@ -12,29 +12,29 @@
 namespace ok::entities
 {
 
-Employee::Employee(int Id, Name InName, const std::tm& Birthday)
-	: MyId{Id}, MyName{std::move(InName)}, MyBirthday{Birthday}
+Employee::Employee(int id, Name name, const std::tm& birthday)
+    : id_{id}, name_{std::move(name)}, birthday_{birthday}
 {
 }
 
 int Employee::GetId() const
 {
-	return MyId;
+    return id_;
 }
 
 Name Employee::GetName() const
 {
-	return MyName;
+    return name_;
 }
 
 std::tm Employee::GetBirthday() const
 {
-	return MyBirthday;
+    return birthday_;
 }
 
-std::ostream& operator<<(std::ostream& Stream, const Employee& Employee)
+std::ostream& operator<<(std::ostream& stream, const Employee& employee)
 {
-	Stream << "Employee{" << Employee.GetId() << ": " << Employee.GetName().GetFullName() << "}";
-	return Stream;
+    stream << "Employee{" << employee.GetId() << ": " << employee.GetName().GetFullName() << "}";
+    return stream;
 }
 } // namespace ok::entities

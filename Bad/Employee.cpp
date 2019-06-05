@@ -7,77 +7,79 @@
 #include <iomanip>
 #include <iostream>
 
-Name::Name(int Id) : GivenName{"<no given name>"}, LastName{"<no last name>"}
+Name::Name(int id) : first_name_{"<no given name>"}, last_name_{"<no last name>"}
 {
-	std::ifstream Data{"employee-data.txt"};
-	while (Data)
-	{
-		int DataId{-1};
-		std::string DataGivenName, DataLastName;
-		std::tm DataDate{};
-		Data >> DataId >> DataGivenName >> DataLastName >> std::get_time(&DataDate, "%Y-%m-%d");
-		if (DataId >= 0 && DataId == Id)
-		{
-			GivenName = DataGivenName;
-			LastName = DataLastName;
-			break;
-		}
-	}
+    std::ifstream data_{"employee-data.txt"};
+    while (data_)
+    {
+        int data_id{-1};
+        std::string data_given_name, data_last_name;
+        std::tm data_date{};
+        data_ >> data_id >> data_given_name >> data_last_name >>
+            std::get_time(&data_date, "%Y-%m-%d");
+        if (data_id >= 0 && data_id == id)
+        {
+            first_name_ = data_given_name;
+            last_name_ = data_last_name;
+            break;
+        }
+    }
 }
 
-std::ostream& operator<<(std::ostream& Stream, const Name& Name)
+std::ostream& operator<<(std::ostream& stream, const Name& name)
 {
-	Stream << Name.GivenName << " " << Name.LastName;
-	return Stream;
+    stream << name.first_name_ << " " << name.last_name_;
+    return stream;
 }
 
-Employee::Employee(int InId) : MyId{InId}, MyName{InId}, Birthday{}
+Employee::Employee(int id) : id_{id}, name_{id}, birthday_{}
 {
-	std::ifstream Data{"employee-data.txt"};
-	while (Data)
-	{
-		int DataId{-1};
-		std::string DataGivenName, DataLastName;
-		std::tm DataDate{};
-		Data >> DataId >> DataGivenName >> DataLastName >> std::get_time(&DataDate, "%Y-%m-%d");
-		if (DataId >= 0 && DataId == MyId)
-		{
-			Birthday = DataDate;
-			break;
-		}
-	}
+    std::ifstream data{"employee-data.txt"};
+    while (data)
+    {
+        int data_id{-1};
+        std::string first_name, last_name;
+        std::tm date{};
+        data >> data_id >> first_name >> last_name >> std::get_time(&date, "%Y-%m-%d");
+        if (data_id >= 0 && data_id == id)
+        {
+            birthday_ = date;
+            break;
+        }
+    }
 }
 
-std::ostream& operator<<(std::ostream& Stream, const Employee& Employee)
+std::ostream& operator<<(std::ostream& stream, const Employee& employee)
 {
-	Stream << "Employee{" << Employee.MyId << ": " << Employee.MyName << ", "
-		   << std::put_time(&Employee.Birthday, "%Y-%m-%d") << ", "
-		   << "$" << Employee.GetSalary()
-		   << (Employee.IsBirthday() ? " ***It's their birthday!***" : "") << "}";
-	return Stream;
+    stream << "Employee{" << employee.id_ << ": " << employee.name_ << ", "
+           << std::put_time(&employee.birthday_, "%Y-%m-%d") << ", "
+           << "$" << employee.GetSalary() << "}"
+           << (employee.IsBirthday() ? " *** It's their birthday!*** " : "");
+    return stream;
 }
 
 bool Employee::IsBirthday() const
 {
-	std::time_t CurrentTime{std::time(nullptr)};
-	std::tm CurrentDate{*localtime(&CurrentTime)};
-	return (CurrentDate.tm_mday == Birthday.tm_mday && CurrentDate.tm_mon == Birthday.tm_mon);
+    std::time_t current_time{std::time(nullptr)};
+    std::tm current_date{*localtime(&current_time)};
+    return (current_date.tm_mday == birthday_.tm_mday && current_date.tm_mon == birthday_.tm_mon);
 }
 
 double Employee::GetSalary() const
 {
-	double Salary{100.0};
-	if (MyName.LastName == "Boss")
-	{
-		Salary += 1000.0;
-	}
-	if (MyName.GivenName.size() <= 3 || MyName.LastName.size() <= 3 || MyName.GivenName == "Bill")
-	{
-		Salary *= 1.1;
-	}
-	if (IsBirthday())
-	{
-		Salary += 150.0;
-	}
-	return Salary;
+    double salary{100.0};
+    if (name_.last_name_ == "Boss")
+    {
+        salary += 1000.0;
+    }
+    if (name_.first_name_.size() <= 3 || name_.last_name_.size() <= 3 ||
+        name_.first_name_ == "Bill")
+    {
+        salary *= 1.1;
+    }
+    if (IsBirthday())
+    {
+        salary += 150.0;
+    }
+    return salary;
 }

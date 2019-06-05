@@ -20,18 +20,18 @@ using ok::entities::SalaryComputationStrategy;
 class AugmentedEmployeeListPrinter : public EmployeeListPrinter
 {
 public:
-	AugmentedEmployeeListPrinter(
-		std::ostream& Stream, std::shared_ptr<const DateGenerator> DateGenerator,
-		std::shared_ptr<const SalaryComputationStrategy> SalaryComputationStrategy);
+    AugmentedEmployeeListPrinter(
+        std::ostream& stream, std::shared_ptr<const DateGenerator> date_generator,
+        std::shared_ptr<const SalaryComputationStrategy> salary_computation_strategy);
 
-	~AugmentedEmployeeListPrinter() override;
+    ~AugmentedEmployeeListPrinter() override;
 
-	void PrintEmployee(const ok::entities::Employee& Employee) const override;
+    void PrintEmployee(const ok::entities::Employee& employee) const override;
 
 private:
-	std::ostream* Stream{};
-	std::shared_ptr<const DateGenerator> DateGenerator{};
-	std::shared_ptr<const SalaryComputationStrategy> SalaryComputationStrategy{};
+    std::ostream* stream_{};
+    std::shared_ptr<const DateGenerator> date_generator_{};
+    std::shared_ptr<const SalaryComputationStrategy> salary_computation_strategy_{};
 };
 
 } // namespace ok::use_cases

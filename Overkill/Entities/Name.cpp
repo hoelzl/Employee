@@ -10,29 +10,29 @@
 namespace ok::entities
 {
 
-Name::Name(std::string InFirstName, std::string InLastName)
-	: FirstName{std::move(InFirstName)}, LastName{std::move(InLastName)}
+Name::Name(std::string first_name, std::string last_name)
+    : first_name_{std::move(first_name)}, last_name_{std::move(last_name)}
 {
 }
 
 std::string Name::GetFullName() const
 {
-	return FirstName + " " + LastName;
+    return first_name_ + " " + last_name_;
 }
 
 std::string Name::GetFirstName() const
 {
-	return FirstName;
+    return first_name_;
 }
 
 std::string Name::GetLastName() const
 {
-	return LastName;
+    return last_name_;
 }
 
 std::ostream& operator<<(std::ostream& Stream, const Name& Name)
 {
-	Stream << Name.GetFullName();
-	return Stream;
+    Stream << Name.GetFullName();
+    return Stream;
 }
 } // namespace ok::entities
