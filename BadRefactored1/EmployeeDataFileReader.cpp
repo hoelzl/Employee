@@ -12,7 +12,8 @@ EmployeeData EmployeeDataFileReader::readEmployeeData(int id) const
     std::ifstream data{data_file_name_};
     while (data)
     {
-        std::string first_name, last_name;
+        std::string first_name{};
+        std::string last_name{};
         data >> result.id_ >> first_name >> last_name >>
             std::get_time(&result.birthday_, "%Y-%m-%d");
         if (result.id_ >= 0 && result.id_ == id)

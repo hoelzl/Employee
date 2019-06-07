@@ -19,7 +19,8 @@ NameData NameFileReader::readName(int id) const
     while (data_)
     {
         int data_id{-1};
-        std::string first_name, last_name;
+        std::string first_name{"<missing name>"};
+        std::string last_name{"<missing name>"};
         std::tm date{};
         data_ >> data_id >> first_name >> last_name >> std::get_time(&date, "%Y-%m-%d");
         if (data_id >= 0 && data_id == id)

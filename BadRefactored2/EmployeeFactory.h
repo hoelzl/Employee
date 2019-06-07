@@ -15,15 +15,15 @@
 struct EmployeeData
 {
     int id_;
-    std::string first_name_;
-    std::string last_name_;
-    std::tm birthday_;
+    std::string first_name_{"<no first name>"};
+    std::string last_name_{"<no last name>"};
+    std::tm birthday_{};
 };
 
 class EmployeeFactory
 {
 public:
-    EmployeeFactory(const char* data_file_name);
+    explicit EmployeeFactory(const char* data_file_name);
     Employee CreateEmployee(int id);
 
 

@@ -9,8 +9,8 @@
 
 struct NameData
 {
-    std::string first_name_;
-    std::string last_name_;
+    std::string first_name_{"<no first name>"};
+    std::string last_name_{"<no last name>"};
 };
 
 class NameReader
